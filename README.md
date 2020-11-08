@@ -4,23 +4,19 @@ This project is based on [this tutorial by Callicoder](https://www.callicoder.co
 
 ## Prerequisites
 
-- MongoDB
-- NodeJS
-- yarn or npm
-- Heroku CLI
+- [MongoDB](https://docs.mongodb.com/guides/server/install/)
+- [NodeJS](https://nodejs.org/en/download/)
+- [yarn](https://yarnpkg.com/getting-started/install) or npm
+- [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
-## Deploy
-
-```
-git push heroku master
-```
+**Note:** Instead of installing NodeJS directly, we recommend using node version manager ([nvm](https://github.com/nvm-sh/nvm)).
 
 ## Usage
 
 1. Clone git repository. You can use the following command: `git clone https://github.com/n-lam/tech-literacy-series-backend.git`
 2. Go into the project folder: `cd tech-literacy-series-backend`
-3. Install dependencies: `yarn`
-4. Start the server: `yarn start`
+3. Install dependencies: `yarn` or `npm install`
+4. Start the server: `yarn start` or `npm run start`
 
 ## Testing
 
@@ -60,4 +56,10 @@ curl -X PUT -H 'Content-Type: application/json' -d '{"title":"Introduction","con
 
 ```
 curl -X DELETE http://<domain>/notes/<id>
+```
+
+## Deploy
+
+```
+git push heroku master
 ```
