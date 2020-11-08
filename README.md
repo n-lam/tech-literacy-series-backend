@@ -15,18 +15,49 @@ This project is based on [this tutorial by Callicoder](https://www.callicoder.co
 git push heroku master
 ```
 
-## Test Command
+## Usage
 
-When testing locally, to create a new record, use:
+1. Clone git repository. You can use the following command: `git clone https://github.com/n-lam/tech-literacy-series-backend.git`
+2. Go into the project folder: `cd tech-literacy-series-backend`
+3. Install dependencies: `yarn`
+4. Start the server: `yarn start`
+
+## Testing
+
+**Note:** Replace `<domain>` with the URL of the Heroku app. If you are testing locally, replace it with `localhost:3000`.
+
+### Insert Record
 
 ```
-curl -d '{"title":"Introduction","content":"Hello World!"}' -H 'Content-Type: application/json' http://localhost:3000/notes
+curl -d '{"title":"Introduction","content":"Hello World!"}' -H 'Content-Type: application/json' http://<domain>/notes
 ```
 
-If testing in production, use:
+### Find All Records
 
 ```
-curl -d '{"title":"Introduction","content":"Hello World!"}' -H 'Content-Type: application/json' https://<URL>/notes
+curl http://<domain>/notes/
 ```
 
-**Note:** Replace <URL> with the URL of the Heroku app.
+### Find All Records with a given Title or Content
+
+```
+curl http://<domain>/notes/?query=hello
+```
+
+### Find One Record
+
+```
+curl http://<domain>/notes/<id>
+```
+
+### Update Record
+
+```
+curl -X PUT -H 'Content-Type: application/json' -d '{"title":"Introduction","content":"Goodbye!"}' http://<domain>/notes/<id>
+```
+
+### Delete Record
+
+```
+curl -X DELETE http://<domain>/notes/<id>
+```
