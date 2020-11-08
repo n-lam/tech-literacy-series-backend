@@ -28,7 +28,23 @@ exports.create = (req, res) => {
 
 // Retrieve and return all notes from the database.
 exports.findAll = (req, res) => {
-    Note.find()
+    const query = req.query.query ? {
+        $or: [
+            {
+                content: {
+                    $regex: `${req.query.query}`,
+                    $options: 'i'
+                }
+            },
+            {
+                title: {
+                    $regex: `${req.query.query}`,
+                    $options: 'i'
+                }
+            }
+        ]
+    } : {};
+    Note.find(query)
     .then(notes => {
         res.send(notes);
     }).catch(err => {
