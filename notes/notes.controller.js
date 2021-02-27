@@ -28,17 +28,18 @@ exports.create = (req, res) => {
 
 // Retrieve and return all notes from the database.
 exports.findAll = (req, res) => {
-    const query = req.query.query ? {
+    const keyword = req.query.query;
+    const query = keyword ? {
         $or: [
             {
                 content: {
-                    $regex: `${req.query.query}`,
+                    $regex: `${keyword}`,
                     $options: 'i'
                 }
             },
             {
                 title: {
-                    $regex: `${req.query.query}`,
+                    $regex: `${keyword}`,
                     $options: 'i'
                 }
             }
